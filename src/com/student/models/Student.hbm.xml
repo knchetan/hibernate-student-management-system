@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.student.models.Student" table="student">
+
+        <id name="id" column="student_id">
+            <generator class="increment"/>
+        </id>
+
+        <property name="firstName" column="first_name" not-null="true"/>
+        <property name="lastName" column="last_name" not-null="true"/>
+        <property name="phoneNo" column="phone_no" not-null="true"/>
+        <property name="email" column="email" not-null="true"/>
+        <property name="address" column="address" not-null="true"/>
+        <property name="dob" column="dob" not-null="true"/>
+        <property name="age" column="age" not-null="true"/>
+
+        <set name="branch" table="student_branch" cascase="all-delete-orphan" fetch="select">
+                <key column="student_id"/>
+                <many-to-one class="com.student.models.Branch" column="branch_id" />
+        </set>
+        
+        <set name="events" table="student_event" cascade="all-delete-orphan" fetch="select">
+            <key column="student_id"/>
+            <many-to-many class="com.student.models.Event" column="event_id"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

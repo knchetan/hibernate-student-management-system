@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="com.student.models.Event" table="event">
+                <id name="eventId" column="event_id">
+                        <generator class="identity"/>
+                </id>
+                <property name="eventName" column="event_name" not-null="true"/>
+                
+                <!-- Bidirectional mapping: Event has a collection of students -->
+                <set name="students" table="student_event" inverse="true" cascade="all">
+                        <key column="event_id"/>
+                        <many-to-many column="student_id" class="com.student.models.Student"/>
+                </set>
+        </class>
+</hibernate-mapping>
