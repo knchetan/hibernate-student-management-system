@@ -599,8 +599,8 @@ public class StudentController
                 try {
                         List<Branch> branches = branchService.getAllBranches();
                         System.out.println("\n---- Available Branches ----");
-                        for (Branch b : branches) {
-                                System.out.println("ID: " + b.getBranchId() + ", Name: " + b.getBranchName());
+                        for (Branch branch : branches) {
+                                System.out.println("ID: " + branch.getBranchId() + ", Name: " + branch.getBranchName());
                         }
                         System.out.print("Enter branch ID or branch name to update: ");
                         String input = getInput("").trim();

@@ -17,10 +17,7 @@
         <property name="dob" column="dob" not-null="true"/>
         <property name="age" column="age" not-null="true"/>
 
-        <set name="branch" table="student_branch" cascase="all-delete-orphan" fetch="select">
-                <key column="student_id"/>
-                <many-to-one class="com.student.models.Branch" column="branch_id" />
-        </set>
+        <many-to-one name="branch" class="com.student.models.Branch" column="branch_id" not-null="true" />
         
         <set name="events" table="student_event" cascade="all-delete-orphan" fetch="select">
             <key column="student_id"/>

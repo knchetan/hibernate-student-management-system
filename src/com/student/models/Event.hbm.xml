@@ -10,7 +10,7 @@
                 <property name="eventName" column="event_name" not-null="true"/>
                 
                 <!-- Bidirectional mapping: Event has a collection of students -->
-                <set name="students" table="student_event" inverse="true" cascade="all">
+                <set name="students" table="student_event" inverse="true" cascade="all-delete-orphan">
                         <key column="event_id"/>
                         <many-to-many column="student_id" class="com.student.models.Student"/>
                 </set>
